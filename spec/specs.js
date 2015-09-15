@@ -5,4 +5,5 @@ describe('Contact', function() {
     expect(testContact.lastName).to.equal("Moreno");
     expect(testContact.addresses).to.eql([]);
   });
+
 });
