@@ -34,19 +34,20 @@ function resetFields() {
 $(document).ready(function() {
   $("#add-address").click(function() {
     $("#new-addresses").append('<div class="new-address hide_after_submit">' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-street">Street</label>' +
-                                   '<input type="text" class="form-control new-street">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-city">City</label>' +
-                                   '<input type="text" class="form-control new-city">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-state">State</label>' +
-                                   '<input type="text" class="form-control new-state">' +
-                                 '</div>' +
-                               '</div>');
+                                     '<div class="form-group">' +
+                                       '<label for="new-street">Street</label>' +
+                                       '<input type="text" class="form-control new-street">' +
+                                     '</div>' +
+                                     '<div class="form-group">' +
+                                       '<label for="new-city">City</label>' +
+                                       '<input type="text" class="form-control new-city">' +
+                                     '</div>' +
+                                     '<div class="form-group">' +
+                                       '<label for="new-state">State</label>' +
+                                       '<input type="text" class="form-control new-state">' +
+                                     '</div>' +
+                                   '</div>');
+
 });
 
 $("form#new-contact").submit(function(event) {
@@ -65,7 +66,6 @@ $("form#new-contact").submit(function(event) {
       var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
       newContact.addresses.push(newAddress);
 
-      console.log(newAddress);
     });
     $(".hide_after_submit").hide();
 
@@ -73,7 +73,7 @@ $("form#new-contact").submit(function(event) {
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
     $(".contact").last().click(function() {
-      $(".showme").show();
+
 
       $(".showme h2").text(newContact.fullName());
       $(".first-name").text(newContact.firstName);
@@ -85,6 +85,16 @@ $("form#new-contact").submit(function(event) {
       newContact.addresses.forEach(function(address) {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
+
+      $(".showme").fadeIn(3000);
+
+      $(".hover_color").mouseover(function() {
+          $(this).css("color", "red");
+      })
+      .mouseout(function() {
+        $(this).css("color", "initial");
+      });
+
     });
 
     resetFields();
