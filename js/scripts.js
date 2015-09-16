@@ -33,7 +33,7 @@ function resetFields() {
 
 $(document).ready(function() {
   $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
+    $("#new-addresses").append('<div class="new-address hide_after_submit">' +
                                  '<div class="form-group">' +
                                    '<label for="new-street">Street</label>' +
                                    '<input type="text" class="form-control new-street">' +
@@ -66,9 +66,8 @@ $("form#new-contact").submit(function(event) {
       newContact.addresses.push(newAddress);
 
       console.log(newAddress);
-
-
     });
+    $(".hide_after_submit").hide();
 
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
@@ -81,6 +80,7 @@ $("form#new-contact").submit(function(event) {
       $(".last-name").text(newContact.lastName);
 
       $("ul#addresses").text("");
+
 
       newContact.addresses.forEach(function(address) {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
